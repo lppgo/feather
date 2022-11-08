@@ -10,8 +10,9 @@ import (
 	"fmt"
 
 	flatbuffers "github.com/google/flatbuffers/go"
-	"github.com/influxdata/arrow"
-	"github.com/sglyon/feather/fbs"
+	// "github.com/influxdata/arrow"
+	arrow "github.com/apache/arrow/go/v11/arrow"
+	"github.com/lppgo/feather/fbs"
 )
 
 // FeatherColumn is an interface defining core functionality necessary for

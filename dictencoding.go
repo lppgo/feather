@@ -6,7 +6,7 @@ package feather
 import (
 	"fmt"
 
-	"github.com/sglyon/feather/fbs"
+	"github.com/lppgo/feather/fbs"
 )
 
 // Int8Int8DictColumn represents a dict-encoded column with underlying data of type

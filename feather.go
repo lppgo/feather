@@ -8,7 +8,7 @@ import (
 
 	"encoding/binary"
 
-	"github.com/sglyon/feather/fbs"
+	"github.com/lppgo/feather/fbs"
 	"golang.org/x/exp/mmap"
 )
 

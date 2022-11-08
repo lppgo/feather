@@ -1,6 +1,7 @@
 package feather
 
 import (
+	"fmt"
 	"math"
 	"testing"
 )
@@ -10,6 +11,7 @@ import (
 func TestTest2Feather(t *testing.T) {
 	fn := "test_data/test2.feather"
 	src, err := Read(fn)
+	fmt.Printf("read feather file [%s] is ok.\n", fn)
 	if err != nil {
 		t.Fail()
 	}
@@ -218,6 +220,7 @@ func TestTest2Feather(t *testing.T) {
 			t.Errorf("Row %v, Col 11 error. want11[%v] = %v and val11 = %v and vals11[ix] = %v and isvalid11 = %v", ix, ix, want11[ix], val11, vals0[ix], isvalid0)
 		}
 	}
+	fmt.Println("------read finished------")
 }
 
 func TestTest2MissingFeather(t *testing.T) {
@@ -588,4 +591,41 @@ func TestNullIssue2(t *testing.T) {
 	validWant := []bool{false, true}
 	testFirstRowsEqualf64(t, "test_data/ic.feather", 1, valsWant, validWant)
 	testFirstRowsEqualf64(t, "test_data/ic_round8.feather", 1, valsWant, validWant)
+}
+
+func TestRead(t *testing.T) {
+	type args struct {
+		fn string
+	}
+	f := "test_data/test2.feather"
+	tests := []struct {
+		name    string
+		args    args
+		want    *Source
+		wantErr bool
+	}{
+		{
+			name: "TestRead",
+			args: args{
+				fn: f,
+			},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := Read(tt.args.fn)
+			fmt.Printf("read feather file [%s] is ok, error:%v.\n", f, err)
+			t.Logf("read feather file [%s] is ok, error:%v.\n", f, err)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("Read() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			fmt.Printf("%+v\n", got.Columns)
+			t.Logf("%+v\n", got.Columns)
+			// if !reflect.DeepEqual(got, tt.want) {
+			// 	t.Errorf("Read() = %v, want %v", got, tt.want)
+			// }
+		})
+	}
 }

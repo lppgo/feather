@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"text/tabwriter"
 
-	"github.com/sglyon/feather"
+	"github.com/lppgo/feather"
 )
 
 func invoke(any interface{}, name string, args ...interface{}) []reflect.Value {
