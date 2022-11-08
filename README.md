@@ -5,6 +5,13 @@
 - 类似于`pip install feather-format`;
 - fork from `https://github.com/sglyon/feather` and update,rebuild, use mod;
 
+
+## 更新说明
+- fork ,重新更新包，构建；
+- update,rebuild, use mod;
+
+
+
 ## TODO
 
 - docs
